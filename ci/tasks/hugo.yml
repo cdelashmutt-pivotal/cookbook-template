@@ -1,0 +1,16 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: node}
+
+inputs:
+  - name: documentation-repo
+
+
+outputs:
+  - name: compiled-site
+
+run:
+  path: documentation-repo/ci/tasks/hugo.sh

@@ -1,0 +1,36 @@
+resources:
+- name: documentation-repo
+  type: git
+  source:
+    uri: {{git_repo_uri}}
+    branch: master
+    private_key: {{github_token}}
+- name: pcf
+  type: cf
+  source:
+      api: {{cf_api}}
+      organization: {{cf_org}}
+      space: {{cf_space}}
+      username: {{cf-username}}
+      password: {{cf-password}}
+      skip_cert_check: true
+
+jobs:
+- name: compile-site
+  plan:
+  - get: documentation-repo
+    params:
+      submodules: all
+    trigger: true
+
+
+  - task: compile-site
+    file: documentation-repo/ci/tasks/hugo.yml
+
+  - task: index-site
+    file: documentation-repo/ci/tasks/index.yml
+
+  - put: pcf
+    params:
+       manifest: indexed-site/manifest.yml
+       path: indexed-site

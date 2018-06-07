@@ -1,0 +1,29 @@
+To use URL Rewrite you need following - 
+1.	HWC buildpack support 
+  a.	HWC buildpack support was there prior to 2.0 but before that there was no PASW earlier
+  b.	Ever since PASW is available the HWC buildpack support always existed 
+2.	DLL in the container - comes from root FS
+
+Ideal option 
+Move to 1709 before using URL rewrite module. This is because the 1709 image by default includes the 
+required DLL and is part of the container root FS.
+
+Not ideal option
+If you for some reason can’t move to 1709 and have to stay with 2012R2 and would like to test URL rewrite 
+module then following needs to happen.  
+Download the MSI from here. (This is the MSI used in 1709 root FS)
+Option 1 - Manual 
+1.	Create test PCF environment 
+2.	RDP into the Windows cell 
+3.	Install the Rewrite URL module MSI on the host
+4.	Restage your application 
+5.	Repeat this for every Windows cell where the app is going to run . 
+You can use this option to try the URL Rewrite feature, but will not recommend to go to prod with this. 
+Challenge with this option is if platform is repaved or BOSH replenishes the VM then the changes will be lost. 
+
+Option 2 - Automated
+1.	Create a BOSH add-on. A sample Windows add-on can be found here. (Altoros can help you create the BOSH add-on)
+2.	Add a job that installs URL Rewrite module MSI on every Windows VM
+This option can help you go to prod. However, if you plan to move to 1709 it doesn’t make sense to invest in 
+creating the BOSH add-on. 
+

@@ -1,0 +1,3 @@
+root: public
+force_https: true
+#location_includes: nginx/conf/includes/cache_header.conf

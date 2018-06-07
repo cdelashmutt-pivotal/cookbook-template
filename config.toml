@@ -1,0 +1,16 @@
+baseurl = "https://sample-cookbook-url.io"
+languageCode = "en-us"
+title = "A sample cookbook"
+copyright = "Copyright 2017, A Cookbook, Co."
+publishDir = "public"
+theme = "hugo-theme-learn"
+
+[params]
+  description = "A sample cookbook template"
+  showVisitedLinks = false
+  disableShortcutsTitle = true
+  ordersectionsby = "weight"
+  themeVariant = "variants"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON" ]
