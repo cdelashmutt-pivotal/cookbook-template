@@ -39,7 +39,6 @@ There is a `manifest.yml` file you can modify to your liking, and a `.cfignore` 
 
 ## Updating the theme
 
-This site uses the `hugo-theme-learn` theme, which is stored as a git submodule
-under the `themes` directory. We're currently using v2 of the [Hugo learn theme](https://learn.netlify.com/en).
+This site uses the `hugo-theme-learn` theme, which is stored under the `themes` directory. We're currently using v2 of the [Hugo learn theme](https://learn.netlify.com/en).
 
-To pull the latest version of the theme, simply update your submodules: `git submodule update --init --recursive`.
+To pull the latest version of the theme, then download the version of the theme you want to us.
